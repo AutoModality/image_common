@@ -143,7 +143,9 @@ Publisher ImageTransport::advertise(const std::string & base_topic, uint32_t que
 {
   // TODO(ros2) implement when resolved: https://github.com/ros2/ros2/issues/464
   (void) latch;
-  rmw_qos_profile_t custom_qos = rmw_qos_profile_default;
+  // Really this should be a qos argument that gets passed in to the function
+  // with default value
+  rmw_qos_profile_t custom_qos = rmw_qos_profile_sensor_data; //  rmw_qos_profile_default;
   custom_qos.depth = queue_size;
   return create_publisher(impl_->node_.get(), base_topic, custom_qos);
 }
