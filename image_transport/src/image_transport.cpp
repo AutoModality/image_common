@@ -157,7 +157,7 @@ Subscriber ImageTransport::subscribe(
   const TransportHints * transport_hints)
 {
   (void) tracked_object;
-  rmw_qos_profile_t custom_qos = rmw_qos_profile_default;
+  rmw_qos_profile_t custom_qos = rmw_qos_profile_sensor_data; // rmw_qos_profile_default;
   custom_qos.depth = queue_size;
   return create_subscription(
     impl_->node_.get(), base_topic, callback,
@@ -172,7 +172,7 @@ Subscriber ImageTransport::subscribe(
   const rclcpp::SubscriptionOptions options)
 {
   (void) tracked_object;
-  rmw_qos_profile_t custom_qos = rmw_qos_profile_default;
+  rmw_qos_profile_t custom_qos = rmw_qos_profile_sensor_data; //rmw_qos_profile_default;
   custom_qos.depth = queue_size;
   return create_subscription(
     impl_->node_.get(), base_topic, callback,
@@ -186,7 +186,7 @@ CameraPublisher ImageTransport::advertiseCamera(
 {
   // TODO(ros2) implement when resolved: https://github.com/ros2/ros2/issues/464
   (void) latch;
-  rmw_qos_profile_t custom_qos = rmw_qos_profile_default;
+  rmw_qos_profile_t custom_qos = rmw_qos_profile_sensor_data; //rmw_qos_profile_default;
   custom_qos.depth = queue_size;
   return create_camera_publisher(impl_->node_.get(), base_topic, custom_qos);
 }
@@ -198,7 +198,7 @@ CameraSubscriber ImageTransport::subscribeCamera(
   const TransportHints * transport_hints)
 {
   (void) tracked_object;
-  rmw_qos_profile_t custom_qos = rmw_qos_profile_default;
+  rmw_qos_profile_t custom_qos = rmw_qos_profile_sensor_data; //rmw_qos_profile_default;
   custom_qos.depth = queue_size;
   return create_camera_subscription(
     impl_->node_.get(), base_topic, callback,
